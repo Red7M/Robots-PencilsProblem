@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CommentAppRobots&amp;PencilsTest</string>
+    <string name="user_name_text">User name</string>
+    <string name="user_comment_posted_date">1 hour ago</string>
+    <string name="user_comment_text">We are Robots &amp; pencils. We help our clients use mobile, web and frontier technologies to transform their businesses.</string>
+    <string name="create_comment_text">CREATE COMMENT</string>
+    <string name="say_something_comment">Say something…</string>
+    <string name="write_comment">Write Comment</string>
+    <string name="back">BACK</string>
+</resources>
