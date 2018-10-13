@@ -2,10 +2,10 @@ package com.robotspencils.commentsapp.redamehali.commentrobotsandpencilsproblem.
 
 /**
  * Created by Reda Mehali on 10/12/18.
- *
+ * <p>
  * Class for Comment Data Object Model
  * Contains 4 data elements for now.
- *
+ * <p>
  * * Project: Robots & Pencils Technical Problem
  */
 public class Comment {

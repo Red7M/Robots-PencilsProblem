@@ -2,9 +2,9 @@ package com.robotspencils.commentsapp.redamehali.commentrobotsandpencilsproblem.
 
 /**
  * Created by Reda Mehali on 10/12/18.
- *
+ * <p>
  * Class containing constants throughout the whole project.
- *
+ * <p>
  * * Project: Robots & Pencils Technical Problem
  */
 public class Constant {

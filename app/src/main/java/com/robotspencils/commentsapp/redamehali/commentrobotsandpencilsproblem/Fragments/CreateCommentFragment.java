@@ -24,11 +24,11 @@ import java.util.Calendar;
 
 /**
  * Created by Reda Mehali on 10/13/18.
- *
+ * <p>
  * Fragment Create comment class used to give the possibility
  * to the user to enter a comment in the autoEditTextView View
  * This fragment will be destroyed once the user validate a created comment
- *
+ * <p>
  * * Project: Robots & Pencils Technical Problem
  */
 public class CreateCommentFragment extends Fragment {
@@ -137,7 +137,6 @@ public class CreateCommentFragment extends Fragment {
      *
      * @method doInBackground stores data by sending the comment object to our firebase
      * remote server store.
-     *
      * @method onPostExecute remove the current fragment by triggering an interface
      * that will be called on the Comment Main Activity.
      */

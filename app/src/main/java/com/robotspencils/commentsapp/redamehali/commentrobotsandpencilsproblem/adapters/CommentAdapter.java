@@ -13,8 +13,6 @@ import com.robotspencils.commentsapp.redamehali.commentrobotsandpencilsproblem.R
 import com.robotspencils.commentsapp.redamehali.commentrobotsandpencilsproblem.models.Comment;
 import com.squareup.picasso.Picasso;
 
-
-
 import java.util.List;
 
 /**
@@ -22,8 +20,8 @@ import java.util.List;
  * Adapter Class used to set up comments view data blocks
  * one by one while going throughout all comments retrieved
  * from the Firebase DB
- *
- *  * Project: Robots & Pencils Technical Problem
+ * <p>
+ * * Project: Robots & Pencils Technical Problem
  */
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
 

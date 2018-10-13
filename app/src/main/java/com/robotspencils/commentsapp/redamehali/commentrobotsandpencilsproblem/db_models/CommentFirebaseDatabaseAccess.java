@@ -21,14 +21,14 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * Created by Reda Mehali on 10/12/18.
- *
+ * <p>
  * Class for Firebase Database entry points
  * It creates a JSON structure in our database
  * Necessary for real life examples of Big data
  * such as the case of storing comments in our database
  * This structure will make it easy for us to retrieve and save
  * data to our database.
- *
+ * <p>
  * * Project: Robots & Pencils Technical Problem
  */
 public class CommentFirebaseDatabaseAccess {
@@ -54,7 +54,7 @@ public class CommentFirebaseDatabaseAccess {
      * This way, we know that all of our comments will be stored inside that child structure
      * So in case we would like to retrieve these comments, we just need to hit the url path
      * https://robotspencilsproblem-d1234.firebaseio.com/comments
-
+     *
      * @param comment comment object containing comments data
      */
     public static void onStoreDataInFirebaseDatabase(Comment comment) {
@@ -73,16 +73,15 @@ public class CommentFirebaseDatabaseAccess {
      * It contains a countDownLatch since it needs to wait until comments are retrieved
      * before returning them. This will run in the background so it won't block the main
      * thread. Also, it will organize comments in newest first order.
-     * @param context context from the main comment activity
-     * @param countDownLatch counter for blocking background thread until data is retrieved, then release.
      *
+     * @param context        context from the main comment activity
+     * @param countDownLatch counter for blocking background thread until data is retrieved, then release.
      * @return mCommentList returns list of all comments from the DB.
      */
 
     //TODO CAVEAT: THIS METHOD WILL FAIL SINCE THE CURRENT PROJECT DOES NOT CONTAIN A REAL RESTFUL SERVER.
     //TODO THE CRASH MIGHT BE Caused by: org.gradle.api.GradleException: File google-services.json is missing.
     //TODO The Google Services Plugin cannot function without it.
-
     public static List<Comment> onRetrieveDataFromFirebaseDatabase(Context context, CountDownLatch countDownLatch) {
         initializeFirebase(context);
 

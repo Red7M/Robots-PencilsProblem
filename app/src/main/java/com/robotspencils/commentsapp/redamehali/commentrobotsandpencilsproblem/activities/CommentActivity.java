@@ -2,9 +2,6 @@ package com.robotspencils.commentsapp.redamehali.commentrobotsandpencilsproblem.
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +14,7 @@ import com.robotspencils.commentsapp.redamehali.commentrobotsandpencilsproblem.F
 import com.robotspencils.commentsapp.redamehali.commentrobotsandpencilsproblem.R;
 import com.robotspencils.commentsapp.redamehali.commentrobotsandpencilsproblem.adapters.CommentAdapter;
 import com.robotspencils.commentsapp.redamehali.commentrobotsandpencilsproblem.db_models.CommentFirebaseDatabaseAccess;
+import com.robotspencils.commentsapp.redamehali.commentrobotsandpencilsproblem.helpers.CommentHelper;
 import com.robotspencils.commentsapp.redamehali.commentrobotsandpencilsproblem.interfaces.RemoveFragmentListener;
 import com.robotspencils.commentsapp.redamehali.commentrobotsandpencilsproblem.models.Comment;
 
@@ -30,8 +28,8 @@ import java.util.concurrent.CountDownLatch;
  * It will contain retrieved Comment from the remote Store
  * Comments will be displayed in a recyclerView that is instantiated
  * in this activity class. Also, the newest comment will show first.
- *
- *  * Project: Robots & Pencils Technical Problem
+ * <p>
+ * * Project: Robots & Pencils Technical Problem
  */
 public class CommentActivity extends AppCompatActivity implements RemoveFragmentListener {
 
@@ -56,7 +54,7 @@ public class CommentActivity extends AppCompatActivity implements RemoveFragment
         createCommentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onLaunchCreateCommentFragment();
+                CommentHelper.onLaunchCreateCommentFragment(CommentActivity.this);
             }
         });
 
@@ -78,39 +76,17 @@ public class CommentActivity extends AppCompatActivity implements RemoveFragment
     }
 
     /**
-     * Method used to launch fragment where user can write a comment
-     */
-    private void onLaunchCreateCommentFragment() {
-
-        Fragment fragment = getSupportFragmentManager().findFragmentByTag(CreateCommentFragment.class.getName());
-
-        if (fragment == null) {
-            fragment = Fragment.instantiate(this, CreateCommentFragment.class.getName());
-        }
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.activityCommentLayout, fragment,
-                CreateCommentFragment.class.getName()).commit();
-
-    }
-
-    /**
      * Interface callback called whenever this method is executed
      * from the fragment. The method finishes/destroys the CreateCommentFragment class
      */
     @Override
     public void onFragmentRemoved() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        if (fragmentManager != null) {
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.remove(getSupportFragmentManager()
-                    .findFragmentByTag(CreateCommentFragment.class.getName())).commit();
-
-        }
+        CommentHelper.onRemoveFragment(this);
     }
 
     /**
      * AsyncTask Class used to retrieve comments from the database.
-     *
+     * <p>
      * The AsyncTask class serves as a background thread in order to not block the
      * main thread when we want to retrieve comments. Also, it's a static class but
      * in the same time, it executes some variables that may create memory leakage.
@@ -119,10 +95,8 @@ public class CommentActivity extends AppCompatActivity implements RemoveFragment
      *
      * @method onPreExecute is in main thread. It is used to display
      * a spinning progress bar while retrieving comments from server store.
-     *
      * @method doInBackground is used to retrieve comments from the server store
      * in the background in order to not block the main thread while doing that work.
-     *
      * @method onPostExecute hides progress bar, display recyclerView, and pass the
      * list of retrieve comments to the global variable inside our Comment Activity class.
      * Finally, we will use that list of comments that we retrieve and set it in our RecyclerView
